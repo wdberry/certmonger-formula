@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Set default values.
+---
+values:
+  pkg:
+    name: certmonger
+  rootgroup: root
+  config: '/etc/certmonger'
+  service:
+    name: certmonger
+  subcomponent:
+    config: '/etc/certmonger-subcomponent-formula.conf'
+  # Just here for testing
+  added_in_defaults: defaults_value
+  winner: defaults
+...
