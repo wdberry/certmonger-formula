@@ -5,20 +5,20 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as certmonger with context %}
 
-{% for cert in certmonger.certs %}
+{% for cert, opts in certmonger.certs.iteritems() %}
 
 {{ cert }}:
   certmonger.request:
   {# Define values for key/cert paths necessary to generate a basic cert from FreeIPA utilizing the HOST principal.
   If key_location or cert_location is explicitly defined from the pillars (or if a NSSDB is being used), it'll be added
   to the list of parameters with any other explict variables. #}
-  {% if not cert.get('key_location') and not cert.get('db_dir') %}
-  - key_location: "{{ certmonger.key_dir }}/{{ cert }}.{{ certmonger.key_ext }}"
+  {% if not opts.get('key_location') and not opts.get('db_dir') %}
+  - key_location: "{{ certmonger.key_dir }}{{ cert }}{{ certmonger.key_ext }}"
   {% endif %}
-  {% if not cert.get('cert_location') and not cert.get('db_dir') %}
-  - cert_location: "{{ certmonger.cert_dir }}/{{ cert }}.{{ certmonger.cert_ext }}"
+  {% if not opts.get('cert_location') and not opts.get('db_dir') %}
+  - cert_location: "{{ certmonger.cert_dir }}{{ cert }}{{ certmonger.cert_ext }}"
   {% endif %}
-  {{ cert | dict_to_sls_yaml_params | indent }}
+  {{ opts | dict_to_sls_yaml_params | indent }}
 
   
 
