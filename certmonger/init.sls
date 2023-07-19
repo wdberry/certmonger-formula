@@ -5,6 +5,7 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as certmonger with context %}
 
+{% if certmonger.certs.items()|length %}
 {% for cert, opts in certmonger.certs.items() %}
 
 {{ cert }}:
@@ -26,3 +27,4 @@
 
 
 {% endfor %}
+{% endif %}
