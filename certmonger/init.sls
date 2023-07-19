@@ -13,10 +13,10 @@
   If key_location or cert_location is explicitly defined from the pillars (or if a NSSDB is being used), it'll be added
   to the list of parameters with any other explict variables. #}
   {% if not cert.get('key_location') and not cert.get('db_dir') %}
-  - key_location: "{{ key_dir }}/{{ cert }}.{{ key_ext }}"
+  - key_location: "{{ certmonger.key_dir }}/{{ cert }}.{{ certmonger.key_ext }}"
   {% endif %}
   {% if not cert.get('cert_location') and not cert.get('db_dir') %}
-  - cert_location: "{{ cert_dir }}/{{ cert }}.{{ cert_ext }}"
+  - cert_location: "{{ certmonger.cert_dir }}/{{ cert }}.{{ certmonger.cert_ext }}"
   {% endif %}
   {{ cert | dict_to_sls_yaml_params | indent }}
 
