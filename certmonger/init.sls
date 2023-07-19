@@ -6,6 +6,7 @@
 {% for cert, opts in salt['pillar.get']('certs:certmonger') %}
 
 {{ cert }}:
+  certmonger.cert:
   {# Define values for key/cert paths necessary to generate a basic cert from FreeIPA utilizing the HOST principal.
   If key_location or cert_location is explicitly defined from the pillars (or if a NSSDB is being used), it'll be added
   to the list of parameters with any other explict variables. #}
