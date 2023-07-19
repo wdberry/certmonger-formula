@@ -4,15 +4,9 @@
 # Set default values.
 ---
 values:
-  pkg:
-    name: certmonger
-  rootgroup: root
-  config: '/etc/certmonger'
-  service:
-    name: certmonger
-  subcomponent:
-    config: '/etc/certmonger-subcomponent-formula.conf'
-  # Just here for testing
-  added_in_defaults: defaults_value
-  winner: defaults
+  certs: []
+  cert_dir: ""
+  cert_ext: ".cert.pem"
+  key_dir: ""
+  key_ext: ".key.pem"
 ...
