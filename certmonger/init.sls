@@ -18,9 +18,11 @@
   {% if not opts.get('cert_location') and not opts.get('db_dir') %}
   - cert_location: "{{ certmonger.cert_dir }}{{ cert }}{{ certmonger.cert_ext }}"
   {% endif %}
-  {{ opts | dict_to_sls_yaml_params | indent }}
-
-  
+  {% if opts.len() > 0 %}
+  {% for key, value in opts.items() %}
+  - {{ key }}: {{ value }}
+  {% endfor %}
+  {% endif %}
 
 
 {% endfor %}
