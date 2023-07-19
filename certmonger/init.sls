@@ -18,7 +18,7 @@
   {% if not opts.get('cert_location') and not opts.get('db_dir') %}
   - cert_location: "{{ certmonger.cert_dir }}{{ cert }}{{ certmonger.cert_ext }}"
   {% endif %}
-  {% if opts.len() > 0 %}
+  {% if opts.items().len() > 0 %}
   {% for key, value in opts.items() %}
   - {{ key }}: {{ value }}
   {% endfor %}
