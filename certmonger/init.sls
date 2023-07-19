@@ -3,7 +3,7 @@
 
 {% from "certmonger/map.jinja" import certmonger with context %}
 
-{% for cert, opts in salt['certmonger.certs'] %}
+{% for cert, opts in salt['certmonger']['certs'] %}
 
 {{ cert }}:
   {# Define values for key/cert paths necessary to generate a basic cert from FreeIPA utilizing the HOST principal.
