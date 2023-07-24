@@ -19,6 +19,9 @@
   {% if not opts.get('cert_location') and not opts.get('db_dir') %}
   - certificate_location: "{{ certmonger.cert_dir }}{{ cert }}{{ certmonger.cert_ext }}"
   {% endif %}
+  {% if not opts.get('dns') %}
+  {# Explicitly specify DNS because FreeIPA automatically adds a SAN for the FQDN #}
+  - dns: {{ grains['fqdn'] }}
   {% if opts.items()|length %}
   {% for key, value in opts.items() %}
   - {{ key }}: {{ value }}
