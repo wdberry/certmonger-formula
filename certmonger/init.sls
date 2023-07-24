@@ -40,6 +40,7 @@
     - mode: 0600
     - selinux:
       setype: cert_t
+    - replace: False
 {% endif %}
 
 {% if cert_file %}
@@ -49,6 +50,7 @@
     - mode: 0644
     - selinux:
       setype: cert_t
+    - replace: False
 {% endif %}
 
 {% if opts.get('key_location') %}
@@ -58,6 +60,7 @@
   - mode: {{ opts.get('key_mode') if opts.get('key_mode') is not none else '0600' }}
   - selinux:
     setype: cert_t
+  - replace: False
 {% endif %}
 
 {% if opts.get('certificate_location') %}
@@ -67,6 +70,7 @@
   - mode: {{ opts.get('cert_mode') if opts.get('cert_mode') is not none else '0644' }}
   - selinux:
     setype: cert_t
+  - replace: False
 {% endif %}
 
 {% endfor %}
