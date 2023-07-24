@@ -9,10 +9,10 @@
 {% for cert, opts in certmonger.certs.items() %}
 
 {% if not opts.get('key_location') and not opts.get('db_dir') %}
-  {% set key_file = {{ certmonger.key_dir }} + {{ cert }} + {{ certmonger.key_ext }} %}
+  {% set key_file = certmonger.key_dir + cert + certmonger.key_ext %}
 {% endif %}
 {% if not opts.get('certificate_location') and not opts.get('db_dir') %}
-  {% set cert_file = {{ certmonger.cert_dir }} + {{ cert }} + {{ certmonger.cert_ext }} %}
+  {% set cert_file = certmonger.cert_dir + cert + certmonger.cert_ext %}
 {% endif %}
 
 
