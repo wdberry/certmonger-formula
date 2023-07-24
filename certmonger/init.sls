@@ -22,6 +22,7 @@
   {% if not opts.get('dns') %}
   {# Explicitly specify DNS because FreeIPA automatically adds a SAN for the FQDN #}
   - dns: {{ grains['fqdn'] }}
+  {% endif %}
   {% if opts.items()|length %}
   {% for key, value in opts.items() %}
   - {{ key }}: {{ value }}
